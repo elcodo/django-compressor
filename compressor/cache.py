@@ -70,8 +70,8 @@ def get_offline_manifest():
     if _offline_manifest is None:
         filename = get_offline_manifest_filename()
         if default_storage.exists(filename):
-            with default_storage.open(filename) as fp:
-                _offline_manifest = json.loads(fp.read().decode('utf8'))
+            fp = default_storage.open(filename)
+            _offline_manifest = json.loads(fp.read().decode('utf8'))
         else:
             _offline_manifest = {}
     return _offline_manifest
